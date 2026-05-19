@@ -1,7 +1,7 @@
 # WatchKeeper
 WatchKeeper keeps a close watch over owned assets.
 
-##Progress Report
+## Progress Report
 27 April 2026:
 Got Pi to stream video over local network using MediaMTX. Setup was far easier than I imagined it was going to be.
 ![Screenshot of stream from Pi.](/Progress%20Images/web_screenshot.jpeg)
