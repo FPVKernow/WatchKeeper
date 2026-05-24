@@ -8,6 +8,8 @@ WatchKeeper keeps a close watch over owned assets.
 4. Server to push email notification from doman already owned.
 
 ## Progress Report
+23 May 2026:
+Setup Dell Optiplex 3050 SFF with Ubuntu Server LTS and wired into network. Set static IP address and confirmed maintaining address with SSH connection after reboots.
 19 May 2026:
 Decided to put the Pi and camera aside for now to focus on a lower power GPS logger. Ordered a T-SIM7000G from LilyGo and Adafruit MPU-6050 for testing. Will have the T-SIM report back to my home server (at this stage) via VPS as to not expose my home network. Then planning on sending an email if the device goes outside of a set radius from its home. Only getting this to a MVP stage for a family member.
 27 April 2026:
