@@ -8,6 +8,8 @@ WatchKeeper keeps a close watch over owned assets.
 4. Server to push email notification from doman already owned.
 
 ## Progress Report
+- 30 May 2026:
+Docker installed on server.
 - 23 May 2026:
 Setup Dell Optiplex 3050 SFF with Ubuntu Server LTS and wired into network. Set static IP address and confirmed maintaining address with SSH connection after reboots.
 - 19 May 2026:
