@@ -8,6 +8,8 @@ WatchKeeper keeps a close watch over owned assets.
 4. Server to push email notification from doman already owned.
 
 ## Progress Report
+- 31 May 2026:
+Got first container running Mosquitto broker and subscriber displaying incoming messages from publisher.
 - 30 May 2026:
 Docker installed on server.
 - 23 May 2026:
