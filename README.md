@@ -8,6 +8,8 @@ WatchKeeper keeps a close watch over owned assets.
 4. Server to push email notification from doman already owned.
 
 ## Progress Report
+- 4 June 2026:
+Set up VPS today. Configured firewall and ssh settings. Next is docker and wireguard on the VPS then spinning up the Mosquitto container. Then seeing test messages landing on my Optiplex after being sent from my laptop via the VPS.
 - 1 June 2026:
 Configured Mosquitto to work with usernames and passwords. Generated TSL certifcates for Moquitto and configured the .config file to enable testing with MQTT Explorer. Was able to connect, send and recieve. Some file permission issues to overcome while in this V1. (My V1s are typically just getting each element working even if it is messy, V2s will be in a publishable state for others to start using.)
 - 31 May 2026:
