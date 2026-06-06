@@ -8,6 +8,8 @@ WatchKeeper keeps a close watch over owned assets.
 4. Server to push email notification from doman already owned.
 
 ## Progress Report
+- 6 June 2026:
+Subdomain configured on owned domain for MQTT messages back to VPS.
 - 4 June 2026:
 Set up VPS today. Configured firewall and ssh settings. Next is docker and wireguard on the VPS then spinning up the Mosquitto container. Then seeing test messages landing on my Optiplex after being sent from my laptop via the VPS.
 - 1 June 2026:
