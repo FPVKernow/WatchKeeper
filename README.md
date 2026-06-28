@@ -31,3 +31,8 @@ Got Pi to stream video over local network using MediaMTX. Setup was far easier t
 ## Learning Log
 20 May 2026:
 First introductuon to MQTT, Node-RED and VPS.
+
+<img width="1206" height="778" alt="image" src="https://github.com/user-attachments/assets/94cdeead-6d2a-4289-a386-bdd3c561d70e" />
+
+Making good progress so far. I have a VPS and node-red instace set up now which is emailing me all JSONs that are published to the /test topic on the MQTT broker.
+
