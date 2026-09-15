@@ -1,2 +1,46 @@
 # WatchKeeper
+<<<<<<< HEAD
 Keeping watch over vessels, while onboard and away.
+=======
+<<<<<<< HEAD
+Keeping watch over vessles, while onboard and away.
+=======
+WatchKeeper keeps a close watch over owned assets.
+
+# Plan
+1. Get T-SIM7000G reporting GPS position over cellular network with MQTT to VPS. Send JSON.
+2. Connect spare server PC to VPS.
+3. Get server to process if GPS reports are outside of boundary (eg 200m from set location).
+4. Server to push email notification from doman already owned.
+
+## Progress Report
+- 6 June 2026:
+Subdomain configured on owned domain for MQTT messages back to VPS.
+- 4 June 2026:
+Set up VPS today. Configured firewall and ssh settings. Next is docker and wireguard on the VPS then spinning up the Mosquitto container. Then seeing test messages landing on my Optiplex after being sent from my laptop via the VPS.
+- 1 June 2026:
+Configured Mosquitto to work with usernames and passwords. Generated TSL certifcates for Moquitto and configured the .config file to enable testing with MQTT Explorer. Was able to connect, send and recieve. Some file permission issues to overcome while in this V1. (My V1s are typically just getting each element working even if it is messy, V2s will be in a publishable state for others to start using.)
+- 31 May 2026:
+Got first container running Mosquitto broker and subscriber displaying incoming messages from publisher.
+- 30 May 2026:
+Docker installed on server.
+- 23 May 2026:
+Setup Dell Optiplex 3050 SFF with Ubuntu Server LTS and wired into network. Set static IP address and confirmed maintaining address with SSH connection after reboots.
+- 19 May 2026:
+Decided to put the Pi and camera aside for now to focus on a lower power GPS logger. Ordered a T-SIM7000G from LilyGo and Adafruit MPU-6050 for testing. Will have the T-SIM report back to my home server (at this stage) via VPS as to not expose my home network. Then planning on sending an email if the device goes outside of a set radius from its home. Working on getting this to a MVP stage for a family member as quickly as I reasonably can.
+- 27 April 2026:
+Got Pi to stream video over local network using MediaMTX. Setup was far easier than I imagined it was going to be.
+![Screenshot of stream from Pi.](/Progress%20Images/web_screenshot.jpeg)
+
+![My Pi is currently atop my PC in the absolute most minimal craddle I could print on my Ender 3. Will work on a better way of mounting the camera and other sensors now I have a P2S.](/Progress%20Images/Pi_on_PC.jpeg)
+
+## Learning Log
+20 May 2026:
+First introductuon to MQTT, Node-RED and VPS.
+
+<img width="1206" height="778" alt="image" src="https://github.com/user-attachments/assets/94cdeead-6d2a-4289-a386-bdd3c561d70e" />
+
+Making good progress so far. I have a VPS and node-red instace set up now which is emailing me all JSONs that are published to the /test topic on the MQTT broker.
+
+>>>>>>> 240549a (Initial (re)commit)
+>>>>>>> ff02a68 (setup)
