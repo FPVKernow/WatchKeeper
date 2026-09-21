@@ -1,18 +1,22 @@
+//basic blink LED on T-SIM7000G
+
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#define LED_PIN 12
+#define SerialMon Serial
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  SerialMon.begin(115200);//Baud rate for T-SIM7000G
+
+  pinMode(LED_PIN, OUTPUT); //define pin output
+  digitalWrite(LED_PIN, HIGH); //set initial state
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void loop() { //loops blink LED
+  digitalWrite(LED_PIN, LOW);
+  Serial.println("LED ON");
+  delay(5000);
+  digitalWrite(LED_PIN, HIGH);
+  Serial.println("LED OFF");
+  delay(5000);
 }
