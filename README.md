@@ -7,7 +7,16 @@ WatchKeeper keeps a close watch over owned assets.
 3. Get server to process if GPS reports are outside of boundary (eg 200m from set location).
 4. Server to push email notification from doman already owned.
 
+## Features and Status
+- Onboard geofence logic to alert if departed a defined "home" radius.
+- Heartbeat battery voltage and last heard since
+- IMU impact detection
+- Temperature and humidity sensor integration for dew point calculation
+- Automatic route report
+
 ## Progress Report
+- August and September 2026:
+A bit of a mixed progress month. Had got the T-SIM to publish a psudo-JSON and get delivered to my email as well as getting the GNSS to print to the terminal the lat and long of the device. Wasn't able to keep the progress up due to other commitments and in that time, certificates expired. In reviewing what I had previously done I realised I had published wifi credentials to the repo so decided to delete the repo and start afresh. Really going to be working on what is the next minimum step to keep the progress up. Expect more commits!
 - 6 June 2026:
 Subdomain configured on owned domain for MQTT messages back to VPS.
 - 4 June 2026:
@@ -35,6 +44,3 @@ First introductuon to MQTT, Node-RED and VPS.
 <img width="1206" height="778" alt="image" src="https://github.com/user-attachments/assets/94cdeead-6d2a-4289-a386-bdd3c561d70e" />
 
 Making good progress so far. I have a VPS and node-red instace set up now which is emailing me all JSONs that are published to the /test topic on the MQTT broker.
-
->>>>>>> 240549a (Initial (re)commit)
->>>>>>> ff02a68 (setup)
