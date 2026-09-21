@@ -1,10 +1,4 @@
 # WatchKeeper
-<<<<<<< HEAD
-Keeping watch over vessels, while onboard and away.
-=======
-<<<<<<< HEAD
-Keeping watch over vessles, while onboard and away.
-=======
 WatchKeeper keeps a close watch over owned assets.
 
 # Plan
