@@ -2,10 +2,10 @@
 WatchKeeper keeps a close watch over owned assets.
 
 # Plan
-1. Get T-SIM7000G reporting GPS position over cellular network with MQTT to VPS. Send JSON.
-2. Connect spare server PC to VPS.
-3. Get server to process if GPS reports are outside of boundary (eg 200m from set location).
-4. Server to push email notification from doman already owned.
+1. Get T-SIM7000G reporting data (GPS position, temperature, battery etc) in JSON format over cellular network with MQTT to VPS.
+2. Get T-SIM7000G onbaord logic to detect if GPS position is outside of user defined boundary radius (eg 50m from set location).
+3. Push email if onboard logic flags parameters become out of bounds with time stamp
+4. Develop Progressive Web Application and user interface
 
 ## Features and Status
 - Onboard geofence logic to alert if departed a defined "home" radius.
@@ -14,9 +14,19 @@ WatchKeeper keeps a close watch over owned assets.
 - Temperature and humidity sensor integration for dew point calculation
 - Automatic route report
 
+## To Do
+- Lots!
+
 ## Progress Report
-- August and September 2026:
-A bit of a mixed progress month. Had got the T-SIM to publish a psudo-JSON and get delivered to my email as well as getting the GNSS to print to the terminal the lat and long of the device. Wasn't able to keep the progress up due to other commitments and in that time, certificates expired. In reviewing what I had previously done I realised I had published wifi credentials to the repo so decided to delete the repo and start afresh. Really going to be working on what is the next minimum step to keep the progress up. Expect more commits!
+- 22 September 2026:
+Initialised T-SIM modem to report back modem name and modem info.
+
+![alt text](/WatchKeeper/WatchKeeper/Progress Images/modem_demo.png)
+
+- 21 September 2026:
+Got T-SIM to blink LED on pin12 to prove device still works.
+- July, August and September 2026:
+A bit of mixed progress months. Was able to get the T-SIM to publish a psudo-JSON and get delivered to my email as well as getting the GNSS to print to the terminal the lat and long of the device. Wasn't able to keep the progress up due to other commitments and in that time certificates expired. In reviewing what I had previously done I realised I had published wifi credentials to the repo so decided to delete the repo and start afresh. Really going to be working on what is the next minimum step to keep the progress up. Expect more commits as last few had made good progress by following some good tutorials, now moving forward will be to condense what took a few months into a few days.
 - 6 June 2026:
 Subdomain configured on owned domain for MQTT messages back to VPS.
 - 4 June 2026:
@@ -24,22 +34,17 @@ Set up VPS today. Configured firewall and ssh settings. Next is docker and wireg
 - 1 June 2026:
 Configured Mosquitto to work with usernames and passwords. Generated TSL certifcates for Moquitto and configured the .config file to enable testing with MQTT Explorer. Was able to connect, send and recieve. Some file permission issues to overcome while in this V1. (My V1s are typically just getting each element working even if it is messy, V2s will be in a publishable state for others to start using.)
 - 31 May 2026:
-Got first container running Mosquitto broker and subscriber displaying incoming messages from publisher.
+Got first container running Mosquitto broker and subscriber displaying incoming messages from publisher tests.
 - 30 May 2026:
-Docker installed on server.
+Docker installed on home server.
 - 23 May 2026:
-Setup Dell Optiplex 3050 SFF with Ubuntu Server LTS and wired into network. Set static IP address and confirmed maintaining address with SSH connection after reboots.
-- 19 May 2026:
-Decided to put the Pi and camera aside for now to focus on a lower power GPS logger. Ordered a T-SIM7000G from LilyGo and Adafruit MPU-6050 for testing. Will have the T-SIM report back to my home server (at this stage) via VPS as to not expose my home network. Then planning on sending an email if the device goes outside of a set radius from its home. Working on getting this to a MVP stage for a family member as quickly as I reasonably can.
-- 27 April 2026:
-Got Pi to stream video over local network using MediaMTX. Setup was far easier than I imagined it was going to be.
-![Screenshot of stream from Pi.](/Progress%20Images/web_screenshot.jpeg)
-
-![My Pi is currently atop my PC in the absolute most minimal craddle I could print on my Ender 3. Will work on a better way of mounting the camera and other sensors now I have a P2S.](/Progress%20Images/Pi_on_PC.jpeg)
+Setup Dell Optiplex 3050 SFF with Ubuntu Server LTS and wired into home network. Set static IP address and confirmed maintaining address with SSH connection after reboots.
 
 ## Learning Log
-20 May 2026:
+- 20 May 2026:
 First introductuon to MQTT, Node-RED and VPS.
+- September 2026:
+Reading Eloquent JavaScript
 
 <img width="1206" height="778" alt="image" src="https://github.com/user-attachments/assets/94cdeead-6d2a-4289-a386-bdd3c561d70e" />
 
