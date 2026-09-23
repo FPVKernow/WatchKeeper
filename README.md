@@ -21,7 +21,7 @@ WatchKeeper keeps a close watch over owned assets.
 - 22 September 2026:
 Initialised T-SIM modem to report back modem name and modem info.
 
-![Screenshot of terminal output showing Modem Name and Modem info](Progress Images/modem_demo.png)
+![Screenshot of terminal output showing Modem Name and Modem info](images/modem_demo.png)
 
 - 21 September 2026:
 Got T-SIM to blink LED on pin12 to prove device still works.
