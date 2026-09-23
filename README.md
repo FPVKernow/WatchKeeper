@@ -15,9 +15,11 @@ WatchKeeper keeps a close watch over owned assets.
 - Automatic route report
 
 ## To Do
-- Lots!
+- Send hello world JSON test via cellular
 
 ## Progress Report
+- 23 September 2026;
+Got T-SIM to print GPS position to terminal.
 - 22 September 2026:
 Initialised T-SIM modem to report back modem name and modem info.
 
