@@ -18,7 +18,9 @@ WatchKeeper keeps a close watch over owned assets.
 - Send hello world JSON test via cellular
 
 ## Progress Report
-- 23 September 2026;
+- 29 September 2026:
+Tested out secrets.h for the first time and writing my own.
+- 23 September 2026:
 Got T-SIM to print GPS position to terminal.
 - 22 September 2026:
 Initialised T-SIM modem to report back modem name and modem info.
