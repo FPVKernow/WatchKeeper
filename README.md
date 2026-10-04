@@ -15,9 +15,12 @@ WatchKeeper keeps a close watch over owned assets.
 - Automatic route report
 
 ## To Do
+- PubSubClient hello world JSON test over wifi
 - Send hello world JSON test via cellular
 
 ## Progress Report
+- 04 October 2026:
+Got "hello world" published over MQTT with TLS certificates from T-SIM7000G.
 - 29 September 2026:
 Tested out secrets.h for the first time and writing my own.
 - 23 September 2026:
