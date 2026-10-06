@@ -15,10 +15,11 @@ WatchKeeper keeps a close watch over owned assets.
 - Automatic route report
 
 ## To Do
-- PubSubClient hello world JSON test over wifi
-- Send hello world JSON test via cellular
+- Get some useful data sent in JSON format to MQTT broker.
 
 ## Progress Report
+- 06 October 2026:
+Was able to read battery voltage/SoC using modem. Sent text from T-SIM7000G and sent hello world message via MQTT broker.
 - 04 October 2026:
 Got "hello world" published over MQTT with TLS certificates from T-SIM7000G.
 - 29 September 2026:
