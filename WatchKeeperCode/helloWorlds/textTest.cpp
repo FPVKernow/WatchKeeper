@@ -19,8 +19,8 @@ TinyGsm modem(SerialAT);
 //Generic details used for testing with basic sim from giffgaff.
 #define GSM_PIN ""
 const char apn[] = "giffgaff.com";
-const char uprsUser[] = "gg";
-const char uprsPass[] = "p";
+const char gprsUser[] = "gg";
+const char gprsPass[] = "p";
 
 //board pins
 #define UART_BAUD           115200
@@ -72,16 +72,21 @@ void setup(){
     //set SerialAt to modem
     SerialAT.begin(UART_BAUD, SERIAL_8N1, PIN_RX, PIN_TX);
 
-    delay(50000);
+    Serial.println("Initializing modem...");
+    if (!modem.restart()) {
+        Serial.println("Failed to restart modem, attempting to continue without restarting");
+    }
+
+    delay(5000);
 }
 
 void loop(){
-    //set modem GPIO for GPS
-    modem.sendAT("+SGPIO=0,4,1,1");
-    if (modem.waitResponse(10000L) != 1){
-        SerialMon.println("SGPIO=0,4,1,1 is false");
+    Serial.println("Initializing modem...");
+    if (!modem.init()) {
+        Serial.println("Failed to restart modem, attempting to continue without restarting");
     }
 
+    for (int i = 0; i < 1; i++){
     //get modem name
     String modemName = modem.getModemName();
     delay(500);
@@ -91,11 +96,25 @@ void loop(){
     String modemInfo = modem.getModemInfo();
     delay(500);
     SerialMon.println("Modem Info: "+ modemInfo);
+    }
 
-    //get battery conditions
-    String v_bat;
-    modem.sendAT("+CBC");
-    modem.waitResponse(1000L, v_bat);
-    SerialMon.println("Battery Voltage: " + v_bat);
+    if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
+    delay(10000);
+    return;
+    }
+    if (modem.isGprsConnected()) {
+    Serial.println("connected");
+    String res;
+    String imei = modem.getIMEI();
+    res = modem.sendSMS(//"Your number here", String("Hello World "));
+    
+    } else {
+    Serial.println("not connected");
+    modem.poweroff();
+    }
+    
+    delay(60000);
+    modem.poweroff();
+    delay(60000);
 
 }
