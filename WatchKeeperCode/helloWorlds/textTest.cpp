@@ -106,7 +106,7 @@ void loop(){
     Serial.println("connected");
     String res;
     String imei = modem.getIMEI();
-    res = modem.sendSMS(//"Your number here", String("Hello World "));
+    res = modem.sendSMS("Your number here", String("Hello World "));
     
     } else {
     Serial.println("not connected");
