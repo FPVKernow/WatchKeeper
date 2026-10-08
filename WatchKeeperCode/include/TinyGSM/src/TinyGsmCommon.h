@@ -10,7 +10,7 @@
 #define SRC_TINYGSMCOMMON_H_
 
 // The current library version number
-#define TINYGSM_VERSION "1.0.0"
+#define TINYGSM_VERSION "0.12.0"
 
 #if defined(SPARK) || defined(PARTICLE)
 #include "Particle.h"
@@ -31,15 +31,6 @@
 #ifndef TINY_GSM_YIELD_MS
 #define TINY_GSM_YIELD_MS 0
 #endif
-
-#ifdef BOARD_HAS_PSRAM
-#define TINY_GSM_MALLOC       ps_malloc
-#define TINY_GSM_REALLOC      ps_realloc
-#else
-#define TINY_GSM_MALLOC       malloc
-#define TINY_GSM_REALLOC      realloc
-#endif
-
 
 #ifndef TINY_GSM_YIELD
 #define TINY_GSM_YIELD() \
@@ -89,6 +80,26 @@ static void DBG(Args... args) {
 #define DBG(...)
 #endif
 
+/*
+ * CRTP Helper
+ */
+template <typename modemType, template <typename> class crtpType>
+struct tinygsm_crtp {
+  modemType& thisModem() {
+    return static_cast<modemType&>(*this);
+  }
+  modemType const& thisModem() const {
+    return static_cast<modemType const&>(*this);
+  }
+
+ private:
+  tinygsm_crtp() {}
+  friend crtpType<modemType>;
+};
+
+/*
+ * Min/Max Helpers
+ */
 template <class T>
 const T& TinyGsmMin(const T& a, const T& b) {
   return (b < a) ? b : a;
@@ -99,6 +110,9 @@ const T& TinyGsmMax(const T& a, const T& b) {
   return (b < a) ? a : b;
 }
 
+/*
+ * Automatically find baud rate
+ */
 template <class T>
 uint32_t TinyGsmAutoBaud(T& SerialAT, uint32_t minimum = 9600,
                          uint32_t maximum = 115200) {
@@ -124,15 +138,5 @@ uint32_t TinyGsmAutoBaud(T& SerialAT, uint32_t minimum = 9600,
   SerialAT.begin(minimum);
   return 0;
 }
-
-enum ModemPlatform {
-    ASR_A7670X,
-    ASR_A7608X,
-    QUALCOMM_SIM7670G,
-    QUALCOMM_SIM7600G,
-    QUALCOMM_SIM7080G,
-    QUALCOMM_SIM7000G
-};
-
 
 #endif  // SRC_TINYGSMCOMMON_H_

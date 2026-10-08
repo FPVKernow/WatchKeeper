@@ -13,27 +13,40 @@
 
 #define TINY_GSM_MODEM_HAS_SSL
 
-
-template <class modemType>
+template <class modemType, uint8_t muxCount>
 class TinyGsmSSL {
+  /* =========================================== */
+  /* =========================================== */
+  /*
+   * Define the interface
+   */
  public:
   /*
-   * SSL functions
+   * Secure socket layer (SSL) functions
    */
-  bool deleteCertificate(String filename) {
-    return thisModem().deleteCertificateImpl(filename.c_str());
+  bool addCertificate(const char* filename) {
+    return thisModem().addCertificateImpl(filename);
+  }
+  bool addCertificate(const String& filename) {
+    return addCertificate(filename.c_str());
+  }
+  bool addCertificate(const char* certificateName, const char* cert,
+                      const uint16_t len) {
+    return thisModem().addCertificateImpl(certificateName, cert, len);
+  }
+  bool addCertificate(const String& certificateName, const String& cert,
+                      const uint16_t len) {
+    return addCertificate(certificateName.c_str(), cert.c_str(), len);
   }
 
   bool deleteCertificate(const char* filename) {
     return thisModem().deleteCertificateImpl(filename);
   }
 
-  bool downloadCertificate(const char* filename, const char* buffer) {
-    return thisModem().downloadCertificateImpl(String(filename), buffer);
-  }
-
-  bool downloadCertificate(String filename, const char* buffer) {
-    return thisModem().downloadCertificateImpl(filename, buffer);
+  bool setCertificate(const String& certificateName, const uint8_t mux = 0) {
+    if (mux >= muxCount) return false;
+    certificates[mux] = certificateName;
+    return true;
   }
 
   /*
@@ -46,36 +59,25 @@ class TinyGsmSSL {
   inline modemType& thisModem() {
     return static_cast<modemType&>(*this);
   }
+  ~TinyGsmSSL() {}
 
+  /* =========================================== */
+  /* =========================================== */
   /*
-   * Inner Secure Client
+   * Define the default function implementations
    */
-  /*
- public:
-  class GsmClientSecure : public GsmClient {
-   public:
-    GsmClientSecureSim800() {}
-
-    explicit GsmClientSecureSim800(TinyGsmSim800& modem, uint8_t mux = 0)
-        : GsmClientSim800(modem, mux) {}
-
-   public:
-    int connect(const char* host, uint16_t port, int timeout_s) overide {
-      stop();
-      TINY_GSM_YIELD();
-      rx.clear();
-      sock_connected = at->modemConnect(host, port, mux, true, timeout_s);
-      return sock_connected;
-    }
-  };*/
 
   /*
-   * SSL functions
+   * Secure socket layer (SSL) functions
    */
  protected:
-  bool deleteCertificateImpl(const char* filename) TINY_GSM_ATTR_NOT_IMPLEMENTED;
-  bool downloadCertificateImpl(String      filename,
-                               const char* buffer) TINY_GSM_ATTR_NOT_IMPLEMENTED;
+  bool addCertificateImpl(const char* filename) TINY_GSM_ATTR_NOT_IMPLEMENTED;
+  bool addCertificateImpl(const char* certificateName, const char* cert,
+                          const uint16_t len) TINY_GSM_ATTR_NOT_IMPLEMENTED;
+  bool
+  deleteCertificateImpl(const char* filename) TINY_GSM_ATTR_NOT_IMPLEMENTED;
+
+  String certificates[muxCount];
 };
 
 #endif  // SRC_TINYGSMSSL_H_
